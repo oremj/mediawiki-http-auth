@@ -258,12 +258,13 @@ class HttpAuthPlugin extends AuthPlugin {
 			$user->addToDatabase();
 			$user->setPassword( User::randomPassword());
 			$user->setToken();
-			$this->initUser(&$user);
+			$this->initUser($user);
 		} else {
 			$user->loadFromDatabase();
 		}
 		$user->setCookies();
 		$user->saveSettings();
+		return true;
 	}
 
 	function addNameSub($authname,$wikiname) {
